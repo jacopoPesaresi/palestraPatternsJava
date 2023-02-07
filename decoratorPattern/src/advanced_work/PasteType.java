@@ -1,3 +1,4 @@
+package advanced_work;
 
 public enum PasteType {
     NORMAL("normal"),GLUTEN_FREE("gluten free"),KAMUT("kamut");
