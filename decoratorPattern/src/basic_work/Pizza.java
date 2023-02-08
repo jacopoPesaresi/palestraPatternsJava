@@ -6,6 +6,6 @@ public interface Pizza {
 
     String getIngredients();
 
-    String getOwnerName();
+    String getOwnerName();  
 
 }
