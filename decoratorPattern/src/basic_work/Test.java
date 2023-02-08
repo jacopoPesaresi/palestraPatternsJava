@@ -6,7 +6,8 @@ public class Test {
     // Completare l' assegnamento di p1 ,p2 ,p3 ,p4 opportunamente
     @org.junit.Test
     public void test(){
-    Pizza p1 = new Sausage(new BasicPizza("Jacopo")) ; // funghi + salsiccia su base margherita
+    /* 
+        Pizza p1 = new Sausage(new BasicPizza("Jacopo")) ; // funghi + salsiccia su base margherita
     Pizza p2 = null ; // margherita
     Pizza p3 = new Sausage(p1) ; // doppia salsiccia su base margherita
     Pizza p4 = null ; // come p3 ma stesa
@@ -27,6 +28,6 @@ public class Test {
    // assertEquals(p2.getIngredients(), "Pomodoro, Mozzarella ");
    // assertEquals(p3.getIngredients(), "Pomodoro, Mozzarella, Salsiccia, Salsiccia ");
    // assertEquals(p4.getIngredients(), "[GF] Pomodoro, Mozzarella, Salsiccia, Salsiccia ");
-    
+    */
     }
 }

@@ -3,7 +3,7 @@ package basic_work;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Ingredients implements Pizza{
+public abstract class Ingredients implements Pizza {
 
     protected Pizza basic;
     private final Set<Ingredients> ingrs = new HashSet<>();
@@ -28,5 +28,7 @@ public abstract class Ingredients implements Pizza{
     public String getOwnerName() {
         return basic.getOwnerName();
     }
+
+    //protected 
 
 }

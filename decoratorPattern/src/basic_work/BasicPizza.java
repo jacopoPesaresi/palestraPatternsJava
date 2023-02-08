@@ -7,7 +7,6 @@ public class BasicPizza implements Pizza{
 
     private final static double BASIC_COST = 3.00;
     private final String ownerName;
-    private final Set<Ingredients> ingrs = new HashSet<>();
     
 
     public BasicPizza(String owner){
@@ -21,7 +20,7 @@ public class BasicPizza implements Pizza{
 
     @Override
     public String getIngredients() {
-        return ingrs.toString();
+        return "";
     }
 
     @Override
