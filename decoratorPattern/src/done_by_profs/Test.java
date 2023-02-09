@@ -7,9 +7,9 @@ public class Test {
     @org.junit.Test
     public void test(){
     Pizza p1 = new Sausage(new BasicPizza()) ; // funghi + salsiccia su base margherita
-    Pizza p2 = null ; // margherita
+    //Pizza p2 = null ; // margherita
     Pizza p3 = new Sausage(p1) ; // doppia salsiccia su base margherita
-    Pizza p4 = null ; // come p3 ma stesa
+    //Pizza p4 = null ; // come p3 ma stesa
     // stampe di comodo
     System.out.println(p1.getCost()+" "+p1.getIngredients());
     System.out.println(p3.getCost()+" "+p3.getIngredients());
