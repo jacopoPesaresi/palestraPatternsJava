@@ -29,11 +29,12 @@ public class LoggingListeners implements EventListeners{
             //ps.append("\"" + eventName + "\" has just appened to " + uptaded.getName() + " file");
             fw.write("\"" + eventName + "\" has just appened to " + uptaded.getName() + " file");
             ps2.append("A");
+            
             if (eventName.equals("open")) {
                 ps2.append("aa");
             }
-            ps2.close();
 
+            ps2.close();
         } catch (FileNotFoundException e){
             e.printStackTrace();
         } catch (IOException ex){
