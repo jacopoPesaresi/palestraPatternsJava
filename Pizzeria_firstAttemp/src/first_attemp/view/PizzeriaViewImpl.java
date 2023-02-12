@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 import java.awt.*;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedList;
@@ -24,12 +26,13 @@ public class PizzeriaViewImpl implements PizzeriaView {
     private PizzeriaViewObserver control;
     private final int amountSits;
     private final int cols;
+    private final Deque<LabeledOrder> ordersHistory = new LinkedList<>();
 
     private final JFrame jf = new JFrame();
     private final JButton newOrderButton = new JButton("Add order");
     private final JButton openPizzeria = new JButton("Open/Close");
-    private final List<LabeledOrder> ordersHistory = new LinkedList<>();
-    private final JPanel right = new JPanel();
+    private final JScrollBar jSB = new JScrollBar();
+    
 
     private final Map<JButton,Pair<Integer,Integer>> tables = new HashMap<>();
     //private final JButton newOrderButton = new JButton();
@@ -64,7 +67,7 @@ public class PizzeriaViewImpl implements PizzeriaView {
         
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setSize(700, 400);
-        Dimension minimumSize = new Dimension(400, 400);
+        Dimension minimumSize = new Dimension(700, 400);
         jf.setMinimumSize(minimumSize);
         
         //jf.getContentPane().setLayout(new BorderLayout());
@@ -74,7 +77,7 @@ public class PizzeriaViewImpl implements PizzeriaView {
         
         JPanel left = new JPanel();
         left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
-
+        JPanel right = new JPanel();
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
         JPanel center = new JPanel();
         center.setLayout(new GridLayout(amountSits/cols,cols));
@@ -93,6 +96,7 @@ public class PizzeriaViewImpl implements PizzeriaView {
 
         left.add(openPizzeria);
         left.add(newOrderButton);
+        right.add(jSB);
 
         mainPanel.add(left,BorderLayout.WEST);
         mainPanel.add(right,BorderLayout.EAST);
@@ -109,10 +113,13 @@ public class PizzeriaViewImpl implements PizzeriaView {
         
         lo.setText(orderAdded.getNameAboutOrder());
         System.out.println(lo.getText());
-        ordersHistory.add(lo);
+        ordersHistory.addFirst(lo);
 
-        right.removeAll();
-        ordersHistory.forEach(order -> right.add(order));
+        
+        //right.removeAll();
+        //ordersHistory.forEach(order -> right.add(order));
+        jSB.removeAll();
+        ordersHistory.forEach(order -> jSB.add(order));
         jf.pack();
         
     }
