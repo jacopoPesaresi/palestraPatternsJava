@@ -10,6 +10,4 @@ public interface PizzeriaView{
 
     void newOrder(OrderLabel orderAdded);
     void completeOrder(String orderName);
-    void openPizzeria();
-    void closePizzeria();
 }

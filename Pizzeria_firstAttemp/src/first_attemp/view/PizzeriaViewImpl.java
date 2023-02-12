@@ -122,20 +122,5 @@ public class PizzeriaViewImpl implements PizzeriaView {
         control.completeOrder(orderName);
     }
 
-
-
-
-
-    @Override
-    public void openPizzeria() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void closePizzeria() {
-        // TODO Auto-generated method stub
-        
-    }
     
 }
