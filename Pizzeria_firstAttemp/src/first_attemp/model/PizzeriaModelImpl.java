@@ -16,8 +16,10 @@ public class PizzeriaModelImpl implements PizzeriaModel{
     }
 
     @Override
-    public void addOrder(String orderName) {
-        orders.add(new OrderLabelImpl(orderName));
+    public OrderLabel addOrder(String orderName) {
+        OrderLabel tmp = new OrderLabelImpl(orderName);
+        orders.add(tmp);
+        return tmp;
     }
 
     @Override

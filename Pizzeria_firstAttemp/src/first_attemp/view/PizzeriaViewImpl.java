@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import first_attemp.OrderLabel;
 import first_attemp.Pair;
@@ -28,7 +29,7 @@ public class PizzeriaViewImpl implements PizzeriaView {
     private final JButton newOrderButton = new JButton("Add order");
     private final JButton openPizzeria = new JButton("Open/Close");
     private final List<LabeledOrder> ordersHistory = new LinkedList<>();
-    private final JPanel left = new JPanel();
+    private final JPanel right = new JPanel();
 
     private final Map<JButton,Pair<Integer,Integer>> tables = new HashMap<>();
     //private final JButton newOrderButton = new JButton();
@@ -44,8 +45,8 @@ public class PizzeriaViewImpl implements PizzeriaView {
                 tables.put(b, p);
             }
         }
-
         start();
+
     }
 
     private void uptadeView(){
@@ -63,19 +64,17 @@ public class PizzeriaViewImpl implements PizzeriaView {
         
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setSize(700, 400);
+        Dimension minimumSize = new Dimension(400, 400);
+        jf.setMinimumSize(minimumSize);
+        
         //jf.getContentPane().setLayout(new BorderLayout());
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
-
-        //cols.setLayout(new BoxLayout(cols, BoxLayout.Y_AXIS));
-        //JPanel input = new JPanel(new FlowLayout());
-        //JPanel buttons = new JPanel(new FlowLayout());
-        //JPanel left = new JPanel();
         
+        JPanel left = new JPanel();
         left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
 
-        JPanel right = new JPanel();
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
         JPanel center = new JPanel();
         center.setLayout(new GridLayout(amountSits/cols,cols));
@@ -83,7 +82,8 @@ public class PizzeriaViewImpl implements PizzeriaView {
         
         newOrderButton.addActionListener(e -> {
             /*richiedi il nome */
-            control.newOrder(Math.random() + "");
+            control.newOrder((((int)(Math.random()*10000))+"") + "");
+            //Stream.generate(() -> ((int)(Math.random()*10000))+"").limit(5).forEach(a -> System.out.println(a));
         });
 
         openPizzeria.addActionListener(e -> {
@@ -93,27 +93,6 @@ public class PizzeriaViewImpl implements PizzeriaView {
 
         left.add(openPizzeria);
         left.add(newOrderButton);
-
-        
-        // //JLabel label = new JLabel();  
-        // exit.addActionListener(e -> {
-            
-        //     JOptionPane.showConfirmDialog(jf, "Gioco resettato");
-        // });      
-
-        // invoke.addActionListener(e -> {
-        //     control.newAttempt(Integer.parseInt(text.getText()));
-        //     //result(control.newAttempt(Integer.parseInt(text.getText())));
-        // });
-        
-        // input.add(text);
-        // buttons.add(invoke);
-        // buttons.add(exit);
-
-        // cols.add(input);
-        // cols.add(buttons);
-        
-        //jf.getContentPane().add(cols,BorderLayout.CENTER);
 
         mainPanel.add(left,BorderLayout.WEST);
         mainPanel.add(right,BorderLayout.EAST);
@@ -127,9 +106,14 @@ public class PizzeriaViewImpl implements PizzeriaView {
     @Override
     public void newOrder(OrderLabel orderAdded) {
         LabeledOrder lo = new LabeledOrder(orderAdded);
+        
+        lo.setText(orderAdded.getNameAboutOrder());
+        System.out.println(lo.getText());
         ordersHistory.add(lo);
-        left.removeAll();
-        ordersHistory.forEach(order -> left.add(order));
+
+        right.removeAll();
+        ordersHistory.forEach(order -> right.add(order));
+        jf.pack();
         
     }
 
@@ -140,7 +124,7 @@ public class PizzeriaViewImpl implements PizzeriaView {
 
 
 
-    
+
 
     @Override
     public void openPizzeria() {

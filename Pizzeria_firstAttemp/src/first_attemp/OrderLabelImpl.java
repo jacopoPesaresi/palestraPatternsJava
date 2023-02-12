@@ -5,11 +5,12 @@ public class OrderLabelImpl implements OrderLabel {
     private final String orderName;
 
     public OrderLabelImpl(String orderName){
+        super();
         this.orderName = orderName;
     }
 
     @Override
-    public String getName() {
+    public String getNameAboutOrder() {
         return orderName;
     }
 

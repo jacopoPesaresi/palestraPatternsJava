@@ -14,12 +14,13 @@ public class PizzeriaControlImpl implements PizzeriaViewObserver {
 
     public PizzeriaControlImpl(int dim){
         view = new PizzeriaViewImpl(dim);
+        view.setObserver(this);
         model = new PizzeriaModelImpl();
     }
 
     @Override
     public void newOrder(String orderName) {
-        model.addOrder(orderName);
+        view.newOrder(model.addOrder(orderName));
     }
 
     @Override

@@ -9,6 +9,7 @@ public class LabeledOrder extends JButton {
     private final OrderLabel myOrder;
 
     public LabeledOrder(OrderLabel connected){
+        super();
         this.myOrder = connected;
     }
 
